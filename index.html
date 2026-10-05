@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>饭点 Radar｜校园食堂点评推荐</title>
+  <meta name="description" content="发现校园食堂新菜、查看真实点评、避开排队和踩雷窗口。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="饭点 Radar 首页">
+      <span class="brand-mark">饭</span>
+      <span>饭点 <em>Radar</em></span>
+    </a>
+    <button class="campus-switch" type="button" id="campusSwitch">
+      <span class="status-dot"></span>
+      香港大学 · 本部校园
+      <span class="chevron">⌄</span>
+    </button>
+    <nav>
+      <a href="#discover" class="active">发现</a>
+      <a href="#rankings">榜单</a>
+      <a href="#reviews">点评</a>
+    </nav>
+    <button class="profile" type="button" aria-label="个人中心">S</button>
+  </header>
+
+  <main>
+    <section class="hero" id="discover">
+      <div class="hero-copy">
+        <div class="eyebrow"><span>LIVE</span> 12:08 午餐雷达已开启</div>
+        <h1>今天，<br><strong>吃点不一样的。</strong></h1>
+        <p>根据你的口味、预算和排队时间，从 <b>128 道</b>校园菜品中，找到此刻最值得吃的一口。</p>
+        <div class="hero-actions">
+          <button class="primary-btn" id="pickForMe" type="button">
+            <span class="dice">✦</span> 帮我选
+          </button>
+          <button class="text-btn" id="openTaste" type="button">调整口味偏好 <span>→</span></button>
+        </div>
+        <div class="social-proof">
+          <div class="avatars">
+            <span>嘉</span><span>天</span><span>Y</span><span>+2k</span>
+          </div>
+          <p><b>2,341 位同学</b><br>本周一起认真吃饭</p>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <span class="floating-label label-one">🔥 本周人气 No.1</span>
+        <span class="floating-label label-two">⏱ 仅需排队 6 min</span>
+        <div class="food-plate">
+          <div class="plate-inner">
+            <span class="rice">🍚</span>
+            <span class="food food-a">🥩</span>
+            <span class="food food-b">🥬</span>
+            <span class="food food-c">🍳</span>
+            <span class="food food-d">🌶️</span>
+          </div>
+        </div>
+        <div class="recommend-card">
+          <div>
+            <span class="match">98% MATCH</span>
+            <h3>黯然销魂叉烧饭</h3>
+            <p>CYM Canteen · 二楼港式窗口</p>
+          </div>
+          <div class="score">4.8</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pulse-strip">
+      <div><span class="pulse-icon">◉</span><p><b>校园饭点实况</b><small>每 5 分钟更新</small></p></div>
+      <div class="pulse-stat"><small>最空闲</small><b>方树泉楼餐厅</b><span class="green">约 3 min</span></div>
+      <div class="pulse-stat"><small>最拥挤</small><b>CYM Canteen</b><span class="orange">约 18 min</span></div>
+      <div class="pulse-stat"><small>今日新菜</small><b>韩式泡菜牛肉锅</b><span>已有 36 人尝鲜</span></div>
+    </section>
+
+    <section class="content-section" id="rankings">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">01 / DISCOVER</span>
+          <h2>此刻值得吃</h2>
+          <p>真实学生评价，不接广告，只推荐好吃的。</p>
+        </div>
+        <div class="view-toggle" aria-label="切换视图">
+          <button class="active" type="button">▦</button><button type="button">☰</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="filter active" data-filter="all" type="button">全部推荐</button>
+        <button class="filter" data-filter="hot" type="button">🔥 人气必吃</button>
+        <button class="filter" data-filter="fast" type="button">⚡ 10分钟搞定</button>
+        <button class="filter" data-filter="light" type="button">🥗 轻食低卡</button>
+        <button class="filter" data-filter="budget" type="button">💰 50元以内</button>
+      </div>
+
+      <div class="dish-grid" id="dishGrid"></div>
+      <button class="load-more" id="loadMore" type="button">查看全部 128 道菜 <span>↓</span></button>
+    </section>
+
+    <section class="avoid-section" id="reviews">
+      <div class="avoid-copy">
+        <span class="section-index light">02 / SMART CHOICE</span>
+        <h2>不只告诉你<br>“什么好吃”</h2>
+        <p>饭点 Radar 聚合实时排队、近期口碑与同学实拍，也会诚实告诉你哪些窗口今天状态不佳。</p>
+        <div class="feature-list">
+          <div><span>01</span><p><b>避开长队</b><small>按你可接受的等待时间推荐</small></p></div>
+          <div><span>02</span><p><b>口味匹配</b><small>记住你的忌口、辣度和预算</small></p></div>
+          <div><span>03</span><p><b>新菜雷达</b><small>第一时间发现值得尝鲜的新品</small></p></div>
+        </div>
+      </div>
+      <div class="warning-board">
+        <div class="board-top">
+          <p><span class="live-dot"></span> 今日避雷情报</p>
+          <span>10月5日 12:05 更新</span>
+        </div>
+        <div class="warning-item">
+          <div class="warning-rank">01</div>
+          <div><b>CYM · 麻辣香锅窗口</b><p>午高峰平均等待 26 分钟</p></div>
+          <span class="severity high">拥挤</span>
+        </div>
+        <div class="warning-item">
+          <div class="warning-rank">02</div>
+          <div><b>学生会大楼 · 面档</b><p>近 1 小时“汤底偏咸”反馈 8 次</p></div>
+          <span class="severity medium">慎选</span>
+        </div>
+        <div class="warning-item">
+          <div class="warning-rank">03</div>
+          <div><b>方树泉楼 · 烧味档</b><p>叉烧饭已售罄，预计 13:10 补货</p></div>
+          <span class="severity low">售罄</span>
+        </div>
+        <p class="community-note">情报来自 47 位同学的实时反馈 <button id="reportBtn" type="button">我也来报料 →</button></p>
+      </div>
+    </section>
+
+    <section class="community-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">03 / COMMUNITY</span>
+          <h2>同学们刚刚吃了</h2>
+        </div>
+        <button class="text-btn" id="writeReview" type="button">写一条点评 <span>＋</span></button>
+      </div>
+      <div class="review-grid">
+        <article class="review-card">
+          <div class="review-head"><span class="review-avatar coral">嘉</span><p><b>MGM · 嘉怡</b><small>8 分钟前</small></p><span class="stars">★★★★★</span></div>
+          <p>“叉烧边缘焦香，流心蛋拌饭真的绝。12点前来基本不用排，下次还点！”</p>
+          <div class="review-dish"><span>🍖</span><p><b>黯然销魂叉烧饭</b><small>CYM Canteen</small></p><button class="like-btn" type="button">♡ 23</button></div>
+        </article>
+        <article class="review-card">
+          <div class="review-head"><span class="review-avatar blue">天</span><p><b>BEcon · 天宇</b><small>21 分钟前</small></p><span class="stars">★★★★☆</span></div>
+          <p>“意外发现的宝藏轻食，三文鱼给得很足。酱汁建议分开放，吃起来更清爽。”</p>
+          <div class="review-dish"><span>🥑</span><p><b>炙烧三文鱼能量碗</b><small>方树泉楼餐厅</small></p><button class="like-btn" type="button">♡ 16</button></div>
+        </article>
+        <article class="review-card">
+          <div class="review-head"><span class="review-avatar green">Y</span><p><b>LLB · Yuki</b><small>36 分钟前</small></p><span class="stars">★★★★★</span></div>
+          <p>“椰香很浓但不会甜腻，辣度对广东人友好。这个天气喝一碗太舒服了。”</p>
+          <div class="review-dish"><span>🍜</span><p><b>冬阴功海鲜汤面</b><small>学生会大楼</small></p><button class="like-btn" type="button">♡ 31</button></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand"><span class="brand-mark">饭</span><span>饭点 <em>Radar</em></span></div>
+    <p>认真吃饭，是每天最小的确定性。</p>
+    <span>校园生活实验室 · Prototype 2026</span>
+  </footer>
+
+  <div class="modal-overlay" id="tasteModal" aria-hidden="true">
+    <div class="modal taste-modal">
+      <button class="modal-close" type="button" aria-label="关闭">×</button>
+      <span class="section-index">YOUR TASTE</span>
+      <h2>今天想吃什么？</h2>
+      <p>选几个关键词，雷达会更懂你。</p>
+      <div class="taste-group">
+        <label>口味</label>
+        <div class="chips"><button type="button">清淡</button><button type="button">香辣</button><button type="button">酸甜</button><button type="button">重口</button></div>
+      </div>
+      <div class="taste-group">
+        <label>预算</label>
+        <div class="chips single"><button type="button">≤ HK$30</button><button class="selected" type="button">HK$30–50</button><button type="button">不限</button></div>
+      </div>
+      <div class="taste-group">
+        <label>最多排队</label>
+        <input id="waitRange" type="range" min="5" max="30" value="10" step="5">
+        <div class="range-label"><span>5 min</span><b id="waitValue">10 分钟</b><span>30 min</span></div>
+      </div>
+      <button class="primary-btn full" id="saveTaste" type="button">保存偏好，开始推荐</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="resultModal" aria-hidden="true">
+    <div class="modal result-modal">
+      <button class="modal-close" type="button" aria-label="关闭">×</button>
+      <span class="result-kicker">RADAR FOUND IT</span>
+      <div class="result-emoji" id="resultEmoji">🍖</div>
+      <p class="match-line"><span></span> 与你今日状态 96% 匹配 <span></span></p>
+      <h2 id="resultName">黯然销魂叉烧饭</h2>
+      <p id="resultMeta">CYM Canteen · HK$42 · 排队约 6 分钟</p>
+      <div class="result-reason" id="resultReason">“想吃满足感强的，但不想等太久——就是它。”</div>
+      <div class="result-actions">
+        <button class="primary-btn" id="acceptPick" type="button">就吃这个</button>
+        <button class="text-btn" id="retryPick" type="button">再摇一次 ↻</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"><span>✓</span><p>已保存</p></div>
+  <script src="app.js"></script>
+</body>
+</html>
